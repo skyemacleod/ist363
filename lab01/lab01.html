@@ -13,7 +13,7 @@
                 padding: 20px 200px 20px 200px;
                 background-color: #d4ebf8;
                 color: #0a3981;
-                margin: 15px;
+                margin: 15px 100px;
                 border-radius: 10px;
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 24px;
@@ -24,7 +24,8 @@
                 margin: 3px;
             }
             .image{
-                display: grid;
+                display: flex;
+                flex-wrap: wrap;
                 
             }
         </style>
@@ -34,12 +35,20 @@
         <div class="div1">
 
             <h1>Skye MacLeod</h2>
-            <p>Something personal is that I have an older sister who also went to Syracuse and a twin brother named Ian who goes to Denver. Professionally, I had an intersnhip in Sales and Marketing and didn't really like it. And Something peculiar about me is I love pasta!</p>
+            <p>Something <span style="color: #e38e49;">personal</span> is that I have an older sister who also went to Syracuse and a twin brother named Ian who goes to Denver. <span style="color: #e38e49;">Professionally</span>, I had an intersnhip in Sales and Marketing and didn't really like it. And Something <span style="color: #e38e49;">peculiar</span> about me is I love pasta!</p>
             <div class="image">
-                <img src="images/skye.jpg">
-                <img src="images/sibs.png">
-                <img src="images/sales.jpg">
-                <img src="images/pasta.jpg">
+                <div class="img">
+                    <img src="images/skye.jpg">
+                </div>
+                <div class="img">
+                    <img src="images/sibs.png">
+                </div>
+                <div class="img">
+                    <img src="images/sales.jpg">
+                </div>
+                <div class="img">
+                    <img src="images/pasta.jpg">
+                </div>
             </div>
         </div>
     </body>

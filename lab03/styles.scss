@@ -1,0 +1,28 @@
+@import './partials/mixins';
+@import './partials/variables';
+
+$melon-color: #e2625c;
+$lime-color: #e4fdc3;
+$mint-color: #8ae2c8;
+$orange-color: #e89b6a;
+
+
+
+.header {
+    background-color: $melon-color; 
+    padding: 3%;
+    text-align: center;
+
+    a {
+        color: white;
+        font-size: 14px;
+        padding: 0.5%;
+        text-decoration: none;
+    }
+}
+
+h1 {
+    color: white;
+    font-size: 36px;
+    
+}

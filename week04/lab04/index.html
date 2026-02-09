@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body class="bg-gray-300">
+<body class="bg-gray-100">
     <nav class="bg-indigo-900 p-5 flex justify-between items-center">
         <div class="">
             <p class="text-2xl font-bold"><span class="text-yellow-400">Orange </span><span class="text-white ">News</span></p>
@@ -45,17 +45,77 @@
         <div class="text-2xl font-bold pb-4">
             <h1>More Featured Stories</h1>
         </div>
-        <div class="flex flex-row flex-wrap gap-6 w-4/5">
-            <div class="bg-white w-full md:w-1/3 p-4 rounded-xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-4 rounded-xl shadow-md">
                 <img class="w-full h-64 object-cover rounded-xl" src="images/graduates.jpg">
+                <h1 class="text-xl font-bold pt-3">Graduation 2025</h1>
+                <p>Invite your friends and family to join us in May.</p>
             </div>
-            <div class="bg-white w-full md:w-1/3 p-4 rounded-xl">
+            <div class="bg-white p-4 rounded-xl shadow-md">
                 <img class="w-full h-64 object-cover rounded-xl" src="images/runners.jpg">
+                <h1 class="text-xl font-bold pt-3">Workplace Run</h1>
+                <p>Run a 5k with your colleagues.</p>
             </div>
-            <div class="bg-white w-full md:w-1/3 p-4 rounded-xl">
+            <div class="bg-white p-4 rounded-xl shadow-md">
                 <img class="w-full h-64 object-cover rounded-xl" src="images/artshow.jpg">
+                <h1 class="text-xl font-bold pt-3">Art Show</h1>
+                <p>The best art of the year on display at Schaffer.</p>
             </div>
         </div>
+    </div>
+    <div class="flex flex-col md:flex-row gap-8 p-8 pt-0">
+        <div class="w-full md:w-1/2">
+            <h1 class="text-2xl pb-4">Top Headlines</h1>
+            <div class="bg-white p-4 rounded-xl shadow-md mb-5">
+                <h1 class="text-xl font-bold">Player X breaks record</h1>
+                <p>The record-breaking performance from Player X stunned fans everywhere...</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-md mb-5">
+                <h1 class="text-xl font-bold ">Team Y wins championship</h1>
+                <p>In an epic showdown, Team Y came out on top with a historic victory...</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-md mb-5">
+                <h1 class="text-xl font-bold ">Athlete Z announces retirement</h1>
+                <p>Athlete Z's retirement shocked the sports world...</p>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2">
+            <h1 class="text-2xl pb-4">Game Scores</h1>
+            <div class="bg-white p-4 rounded-xl shadow-md">
+                <div>
+                    <table class="w-full">
+                        <thead class="w-full">
+                            <tr class="border-b border-gray-300">
+                              <th class="pb-3 font-semibold text-left">Game</th>
+                              <th class="pb-3 font-semibold text-right ">Score</th>
+                            </tr>
+                          </thead>
+                          <tbody class="">
+                            <tr>
+                              <td class="py-3">Women's Hockey vs Miami</td>
+                              <td class="py-3 text-right font-medium">3 - 1</td>
+                            </tr>
+                            <tr>
+                              <td class="py-3">Men's Lacrosse vs St Bonaventure</td>
+                              <td class="py-3 text-right font-medium">7 - 18</td>
+                            </tr>
+                            <tr>
+                              <td class="py-3">Men's Basketball vs Duke</td>
+                              <td class="py-3 text-right font-medium">98 - 75</td>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gray-800 p-6 m-8 rounded-xl">
+        <h1 class="font-bold text-xl text-white pb-4 pt-2">Subscribe to Our Newsletter</h1>
+        <p class="text-white mb-2">Stay updated with the latest news, scores, and exclusive content delivered straight to your inbox!</p>
+        <form class="">
+            <input class="w-full md:w-2/3 rounded-l p-1" type="email" placeholder="Enter your email">
+            <button class="w-full md:w-1/3 bg-yellow-400 rounded-l p-1" type="submit">Subscribe</button>
+        </form>
     </div>
 </body>
 </html>

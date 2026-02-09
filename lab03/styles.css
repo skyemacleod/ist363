@@ -1,13 +1,19 @@
-.header a, .header {
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-}
-
 .header {
-  background-color: #e2625c;
-  padding: 20px;
+  background-color: #e89b6a;
+  padding: 3%;
   text-align: center;
 }
 .header a {
+  color: white;
+  font-size: 14px;
+  padding: 0.5%;
   text-decoration: none;
+}
+
+h2 {
+  color: #e2625c;
+}
+
+h2 {
+  color: #e2625c;
 }/*# sourceMappingURL=styles.css.map */

@@ -30,9 +30,8 @@
         <h3 class="text-dark pt-5">Photographer's Portfolio</h3>
     </div>
     
-    <section class="carousel-section m-4">
-        <div class="container">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="container my-4">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="images/architecture-1868667_1280.jpg" alt="First slide">
@@ -44,20 +43,25 @@
                     <img class="d-block w-100" src="images/blue-eryngo-7319904_1280.jpg" alt="Third slide">
                 </div>
                 <div class="carousel-item">
+                    <img class="d-block w-100" src="images/blue-flower-5158746_1280.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
                     <img class="d-block w-100" src="images/clouds-3353159_1280.jpg" alt="Third slide">
                 </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-                </a>
             </div>
-        </div> 
-    </section>
+        
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+        
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    
    
     <div class="container bg-light pt-4 mb-2 pb-4">
         <h3 class="text-dark text-center pt-4 pb-3"><i class="bi bi-stars"></i>Customer Reviews</h3>
@@ -88,25 +92,71 @@
 
     <div class="container my-4">
         <h3 class="p-0 m-0">FAQs</h3>
-        <div class="border border-black">
-
+        <div class="">
+            <ul class="list-group">
+                <li class="list-group-item active">What type of photography do you specialize in?</li>
+                <li class="list-group-item">I specialize in portrait, wedding, and landscape photography.</li>
+                <li class="list-group-item">Do you offer prints for sale?</li>
+                <li class="list-group-item">How can I book a session?</li>
+              </ul>
         </div>
     </div>
 
-    <div class="container bg-light ">
-        <h3 class="text-dark text-center pt-4 pb-1">Get in Touch</h3>
-        <h4 class="text-center">Questions to ask? Fill out the form to contact me directly...</h4>
+    <div class="container bg-light mb-4 py-4">
+        <div class="container w-50">
+            <h3 class="text-dark text-center pt-4 pb-1">Get in Touch</h3>
+            <h5 class="text-center text-black-75">Questions to ask? Fill out the form to contact me directly...</h5>
+            <form class="my-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text rounded-0"><i class="bi bi-envelope"></i></div>
+                        </div>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g. mario@example.com">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text rounded-0"><i class="bi bi-question-circle"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Name:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text rounded-0"><i class="bi bi-person"></i></div>
+                        </div>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="e.g. Mario">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text rounded-0"><i class="bi bi-question-circle"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">What's your question about?</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text rounded-0"><i class="bi bi-chat-right-dots"></i></div>
+                        </div>
+                        <select class="form-control">
+                            <option>Pricing query</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your query..."></textarea>
+                  </div>
+                <div class="text-center">
+                    <button type="button" class="mt-4 btn btn-sm btn-primary">Submit</button>
+                </div>
+          </form>
+        </div>
+        
+    </div>
+    <div class="container bg-dark py-2 d-flex align-items-center">
+        <p class="text-white">&copy; 2025</p>>
     </div>
 
-    <footer class="bg-light pt-4 pb-4">
-        <div class="container text-center">
-            <h3>About the Artist</h3>
-            <p>Capturing moments through the lens, my passion is bringing emotions to life in every frame.</p>
-            <button type="button" class="btn btn-sm btn-outline-dark">
-                Read More
-            </button>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

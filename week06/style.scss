@@ -1,6 +1,11 @@
-$primary: #3f3f3f;
+$primary: #0059ce;
 $light: #d6ecff;
 $dark: #1a1d4e;
 $success: #ffce2c;
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
 
 @import '../bootstrap-modules/node_modules/bootstrap/scss/bootstrap.scss';

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Week 1 Lab07</title>
+</head>
+<body>
+    <script>
+        //#1*//
+        let myFav = 7;
+        console.log("My favorite number is " + myFav + ".");
+
+        //#2*//
+        let favoriteFoods = ['pasta', 'broccoli', 'bagels', 'quesadillas'];
+        console.log(favoriteFoods[1]);
+        favoriteFoods.push('cesar salad');
+        console.log(favoriteFoods);
+
+        //#3*//
+        const favFoods = ['pasta', 'broccoli', 'bagels', 'quesadillas'];
+        for (let i = 0; i < favFoods.length; i++) {
+            console.log("Favorite Food" + (i + 1) + ":" + favFoods[i]);
+        }
+        
+        //#4*//
+        const favFood = ['pasta', 'broccoli', 'bagels', 'quesadillas'];
+        for (let i = 0; i < favFoods.length; i++) {
+            if (i == 1) {
+                continue;
+            }
+            console.log("Favorite Food" + (i + 1) + ":" + favFoods[i]);
+        }
+
+        //#5*// 
+        const book = {
+            title: 'Are you Famous?',
+            author: 'Mee Baymous',
+            yearPublished: 2004,
+            isAvailable: true
+        };
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author);
+        if (book.isAvailable) {
+            console.log("This book is available for checkout.");
+        } else {
+            console.log("Sorry, this book is currently checked out.");
+        }
+
+        //#6*//
+        let x = 2;
+        while (x <= 20) {
+            console.log(x);
+            x += 2;
+        }
+
+        //#7*//
+        let diceRoll = Math.floor(Math.random() * 6) + 1;
+        console.log("You rolled: " + diceRoll);
+    </script>
+    <h1>Java Script Week 01 - Lab07</h1>
+
+</body>
+</html>

@@ -16,8 +16,9 @@
             console.log(name = "'s human age is = " + humanAge);
             let dogAge = humanAge * 7;
             console.log(name + "'s dog age is = " +dogAge);
-        }
 
+        }
+        function gpaChecker() {
             let gpa = 3.4;
             if (gpa >= 3.5) {
                 console.log("You made the Deans list!")
@@ -25,11 +26,16 @@
             else if (gpa <= 3.5) {
                 console.log("You didn't make the deans list...")
             }
+        }
+        
     </script>
 
     <h1>JavaScript Week 1</h1>
     <button onclick="console.log('Test = ' + test)">Console Log Test</button>
-
+    <br><br>
+    <button onclick="console.log(convertDogAgeToHuman)">Dog Age Calc</button>
+    <br><br>
+    <button onclick="console.log(gpaChecker)">Check Deans List</button>
 
 </body>
 </html>

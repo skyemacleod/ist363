@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participation 08</title>
+</head>
+<body>
+    <script>
+        document.getElementsByClassName("myBtn").addEventListener("click", calcDogAge);
+
+        function calcDogAge() {
+        document.getElementsByClassName("demo").innerHTML = 'Your dog is __ dog years old!' ;
+        }
+    </script>
+    <h1>Dog Age to Dog Years Calculator</h1>
+    <form>
+        <label>Enter your dog's age (in human years):</label>
+        <input type="number" class="dogInput" placeholder="Enter dog's age:">
+        <button class="myBtn" style="background-color: rgb(66, 203, 66); color: white; padding: 2px;">Calculate</button>
+    </form>
+    <p id="demo"></p>
+</body>
+</html>

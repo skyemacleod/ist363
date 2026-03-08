@@ -4,8 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS W2 - Lab08</title>
+
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1{
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        .player img{
+            height: 300px;
+            width: auto;
+        }
+        .fireball{
+            height: 150px;
+            width: auto;
+        }
+        .game-area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 800px;
+        }
+        .shields {
+            display: flex;
+            justify-content: space-between;
+            width: 700px;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        button{
+            margin-top: 20px;
+            width: 800px;
+            padding: 10px;
+            background-color: rgb(255, 179, 39);
+            color: white;
+        }
+        #girlfireball{
+            transform: scaleX(-1);
+        }
+        button:hover{
+            background-color: rgb(255, 149, 0);
+            cursor: pointer;
+        }
+
+        @keyframes fireballAnimation {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(300px); }
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Fireball Duel</h1>
+
+    <div class="game-area">
+        <div class="player">
+            <img src="images/monster.jpg" alt="Monster">
+        </div>
+
+        <img src="images/fireball.gif" alt="fireball" class="fireball" id="monsterFireball">
+        <img src="images/fireball.gif" alt="fireball" class="fireball" id="girlFireball">
+
+        <div class="player">
+            <img src="images/girl.jpg" alt="Girl">
+        </div>
+    </div>
+
+    <div class="shields">
+        <p id="monsterShield">Monster Shield: 100%</p>
+        <p id="girlShield">Girl Shield: 100%</p>
+    </div>
+
+    <button id="fireballBtn">Throw Fireball</button>
+    <p id="result"></p>
+
+    <script>
+        let monsterShield= 100;
+        let girlShield = 100;
+
+        document.getElementById("throwBtn").addEventListener("click", playGame);
+
+        function playGame() {
+            animateFireball();
+
+            let monsterThrow = Math.floor(Math.random() * 20) + 1;
+            let girlThrow = Math.floor(Math.random() * 20) + 1;
+
+            monsterShield -= monsterThrow;
+            girlShield -= girlThrow;
+
+            document.getElementById("monsterShield").innerText = "Monster Shield: " + monsterShield + "%";
+            document.getElementById("girlShield").innerText = "Girl Shield: " + girlShield + "%";
+
+            if (monsterShield <= 0 && girlShield <= 0) {
+                document.getElementById("fireballBtn").style.display = "none";
+                document.getElementById("result").innerText = "They both lost!";
+            } else if (monsterShield <= 0) {
+                document.getElementById("fireballBtn").style.display = "none";
+                document.getElementById("result").innerText = "Monster lost!";
+            } else if (girlShield <= 0) {
+                document.getElementById("fireballBtn").style.display = "none";
+                document.getElementById("result").innerText = "Girl lost!";
+            }
+        }
+
+        function animateFireball() {
+            const fireballs = document.querySelectorAll(".fireball");
+            fireballs.forEach(fireball => {
+                fireball.classList.remove("animate");
+                void fireball.offsetWidth;
+                fireball.classList.add("animate");
+            });
+        }
+        
+    </script>
 </body>
 </html>

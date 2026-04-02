@@ -4,13 +4,6 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
-const profScharf = "Jason Scharf";
-const name = "Skye MacLeod";
-const year = "Senior";
-const major = "Information Management & Technology";
-const students = [{suid: 123456, name: 'Sue Flay', year: 'senior', major: 'Applied Data Analytics'}, {suid: 234567, name: 'Ella Vader', year: 'junior', major: 'Information Management and Technology'}, {suid: 345678, name: 'Chris P Bacon', year: 'junior',major: 'Innovation, Society and Technology'}];
-
-
 function App() {
   const [count, setCount] = useState(0)
 
@@ -23,15 +16,7 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Welcome</h1>
-          <h2>Professor's Name</h2>
-          <p>{profScharf}</p>
-          <ul>
-            <h3>Unordered List</h3>
-            <li>{name}</li>
-            <li>{year}</li>
-            <li>{major}</li>
-          </ul>
+          <h1>Get started</h1>
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
@@ -43,51 +28,6 @@ function App() {
           Count is {count}
         </button>
       </section>
-      <div>
-        <h3>#1 Students</h3>
-        <ul>
-          {
-            students.map(function(student) {
-            return <li>{student.name}<br/>{student.year}<br/> {student.major}</li>;
-            })
-          }
-        </ul>
-      </div>
-
-      <div>
-        <h3> #2 Students w SUID</h3>
-        <ul>
-          {
-            students.map(function(student) {
-            return <li>{student.name}<br/>{student.suid}<br/>{student.year}<br/> {student.major}</li>;
-            })
-          }
-        </ul>
-      </div>
-
-      <div>
-        <h3> #3 Students w SUID</h3>
-        <Students />
-      </div>
-      <div>
-        <Pasta />
-      </div>
-      <div id='sue'>
-        <h2> #5 Sue Flay</h2>
-        <sueFlay />
-      </div>
-      <div>
-        <h3> #5 Just Sue</h3>
-        <ul>
-          {
-            students.filter(function(student) {
-              return student.name === 'Sue Flay';
-            }).map(function(student) {
-              return <li>{student.name}<br/>{student.year}<br/>{student.major}</li>;
-            })
-          }
-        </ul>
-      </div>
 
       <div className="ticks"></div>
 
@@ -177,28 +117,5 @@ function App() {
     </>
   )
 }
-function Students() {
-  return(
-    <div>
-        <ul>
-          {
-            students.map(function(student) {
-            return <li>{student.name}<br/>{student.suid}<br/>{student.year}<br/> {student.major}</li>;
-            })
-          }
-        </ul>
-      </div>
-  )
-}
-function Pasta() {
-  const chew = () => {
-    console.log("MMMMM that's some yummy pasta");
-  }
-
-  return (
-    <button onClick={chew}>Take a bite of pasta!</button>
-  );
-}
-
 
 export default App

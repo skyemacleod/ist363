@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 02</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+    <header class="bg-black sticky border-b border-gray-600 flex items-center justify-between px-6 py-4">
+        <a href="#" style="font-family: 'Bebas Neue'" class="text-4xl">Project 02</a>
+        <nav class="hidden md:flex gap-8">
+            <a href="#" class="text-gray-600 hover:text-pink-200 text-s uppercase font-mono transition-colors">Search</a>
+            <a href="#" class="text-gray-600 hover:text-pink-200 text-s uppercase font-mono transition-colors">Account</a>
+            <a href="#" class="text-gray-600 hover:text-pink-200 text-s uppercase font-mono transition-colors">About</a>
+        </nav>
+    </header>
+
+    <section class="text-center px-4 pt-20 pb-10">
+        <div class="font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5">
+            Music Explorer
+        </div>
+        <h1 style="font-family: 'Bebas Neue'" class="text-8xl text-pink-200 mb-4">Find your sound</h1>
+        <p class="text-gray-500 text-lg mb-10">Search by artist or genre to find your sound ~ Click on a track to load the lyrics</p>
+        <div class="flex max-w-xl mx-auto border border-gray-500 rounded-xl overflow-hidden focus-within:border-pink-400 transition-colors">
+            <input
+                id="search-input"
+                type="text"
+                placeholder="e.g. Olivia Rodrigo, hip hop, rock..."
+                class="flex-1 bg-transparent border-none outline-none text-white px-5 py-4 text-base"
+            />
+            <div class="flex items-center border-l border-gray-500 px-2 ">
+                <select id="search-type" class="bg-transparent text-gray-300 font-mono text-xs px-2 h-full cursor-pointer">
+                  <option value="artist" class="text-white">Artist</option>
+                  <option value="tag" class="text-white">Genre</option>
+                </select>
+            </div>
+            <button id="search-btn" style="font-family: 'Bebas Neue'" class="text-pink-500 bg-pink-200 text-xl py-4 px-5 hover:bg-pink-300">
+                Search
+            </button>
+        </div>
+        <div class="flex flex-wrap gap-2 justify-center mt-6">
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Pop</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Rap</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Hip Hop</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Adele</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Trippie Redd</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Taylor Swift</button>
+        </div>
+    </section>
+
+    <main id="result-section" class="">
+        <div id="tracks-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div class="col-span-full text-center py-20 text-gray-400">
+              <h3 class="text-lg mb-1">Nothing playing yet</h3>
+              <p class="text-sm">Search an artist or genre to see tracks appear here.</p>
+            </div>
+        </div>
+        <div id="results-label" class="hidden items-center gap-3 font-mono text-s uppercase tracking-widest text-muted border-b border-border pb-3 mb-5">
+            Tracks <span id="result-count" class="bg-accent text-bg text-xs px-2 py-0.5 rounded-full font-semibold">0</span>
+        </div>
+        <div id="lyric-section" class="hidden mx-4 border border-pink-400 bg-pink-200 rounded-xl my-4 overflow-hidden w-75">
+            <div style="font-family:'DM Sans',sans-serif" class="flex items-center p-5 bg-pink-400">
+                <div>
+                    <h2 id="song-title" class="text-lg text-black"></h2>
+                    <p id="song-artist" class="text-sm text-black"></p>
+                </div>
+                <button id="lyrics-close" class="ml-auto w-8 h-8 rounded-lg border border-border text-muted hover:border-pink hover:text-pink transition-all flex items-center justify-center text-sm flex-shrink-0">✕</button>
+            </div>
+            <div id="lyrics-body" class="px-6 py-8 max-h-[500px] overflow-y-auto">
+                <pre id="lyrics-text" class="leading-7 text-black whitespace-pre-wrap" style="font-family:'DM Sans',sans-serif"></pre>
+              </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-600 text-center p-6 text-gray-400 font-mono">
+        <p class="text-s">Skye MacLeod - Project 2 - IST363</p>
+        <div class="pt-4 mb-2">
+            <div class="font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mx-1">
+                Last.fm API — Track Data
+            </div>
+            <div class="font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mx-1">
+                Lyrics.ovh — Song Lyrics
+            </div>
+        </div>
+    </footer>
+    <script>
+        const LASTFM_KEY = 'f177da7d147760063d6baffb66e22aec';
+        const LASTFM_BASE = 'https://ws.audioscrobbler.com/2.0/';
+
+        const searchInput = document.getElementById('search-input');
+        const searchTypeEl = document.getElementById('search-type');
+        const searchBtn = document.getElementById('search-btn');
+        const tracksGrid = document.getElementById('tracks-grid');
+        const statusEl = document.getElementById('status');
+        const errorEl = document.getElementById('error-msg');
+        const lyricsPanel = document.getElementById('lyrics-panel');
+        const lyricsTitle = document.getElementById('lyrics-title');
+        const lyricsArtistLabel = document.getElementById('lyrics-artist-label');
+        const lyricsText = document.getElementById('lyrics-text');
+        const lyricsImgWrap = document.getElementById('lyrics-img-wrap');
+        const lyricsClose = document.getElementById('lyrics-close');
+        const resultsLabel = document.getElementById('results-label');
+        const resultCount = document.getElementById('result-count');
+    </script>
+</body>
+</html>

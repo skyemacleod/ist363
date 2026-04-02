@@ -42,26 +42,26 @@
             </button>
         </div>
         <div class="flex flex-wrap gap-2 justify-center mt-6">
-            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Pop</button>
-            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Rap</button>
-            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Hip Hop</button>
-            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Adele</button>
-            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Trippie Redd</button>
-            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all">Taylor Swift</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="pop" data-type="tag">Pop</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="rap" data-type="tag">Rap</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="hip hop" data-type="tag">Hip Hop</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="adele" data-type="artist">Adele</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="trippie redd" data-type="artist">Trippie Redd</button>
+            <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="taylor swift" data-type="artist">Taylor Swift</button>
         </div>
     </section>
 
-    <main id="result-section" class="">
+    <main id="result-section" class="text-center max-w-5xl mx-auto">
+        <div id="results-label" class="hidden items-center gap-3 font-mono text-s uppercase text-pink-200 border-b border-pink-400 pb-3 mb-5">
+            Tracks <span id="result-count" class="bg-pink-400 text-black text-xs px-2 py-0.5 rounded-full font-semibold">0</span>
+        </div>
         <div id="tracks-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <div class="col-span-full text-center py-20 text-gray-400">
               <h3 class="text-lg mb-1">Nothing playing yet</h3>
               <p class="text-sm">Search an artist or genre to see tracks appear here.</p>
             </div>
         </div>
-        <div id="results-label" class="hidden items-center gap-3 font-mono text-s uppercase tracking-widest text-muted border-b border-border pb-3 mb-5">
-            Tracks <span id="result-count" class="bg-accent text-bg text-xs px-2 py-0.5 rounded-full font-semibold">0</span>
-        </div>
-        <div id="lyric-section" class="hidden mx-4 border border-pink-400 bg-pink-200 rounded-xl my-4 overflow-hidden w-75">
+        <div id="lyrics-section" class="hidden mx-4 border border-pink-400 bg-pink-200 rounded-xl my-4 overflow-hidden w-75">
             <div style="font-family:'DM Sans',sans-serif" class="flex items-center p-5 bg-pink-400">
                 <div>
                     <h2 id="song-title" class="text-lg text-black"></h2>
@@ -87,23 +87,142 @@
         </div>
     </footer>
     <script>
+        console.log("JS is running");
         const LASTFM_KEY = 'f177da7d147760063d6baffb66e22aec';
         const LASTFM_BASE = 'https://ws.audioscrobbler.com/2.0/';
-
+        
         const searchInput = document.getElementById('search-input');
         const searchTypeEl = document.getElementById('search-type');
         const searchBtn = document.getElementById('search-btn');
         const tracksGrid = document.getElementById('tracks-grid');
-        const statusEl = document.getElementById('status');
-        const errorEl = document.getElementById('error-msg');
-        const lyricsPanel = document.getElementById('lyrics-panel');
-        const lyricsTitle = document.getElementById('lyrics-title');
-        const lyricsArtistLabel = document.getElementById('lyrics-artist-label');
+        const lyricsPanel = document.getElementById('lyrics-section');
+        const lyricsTitle = document.getElementById('song-title');
+        const lyricsArtistLabel = document.getElementById('song-artist');
         const lyricsText = document.getElementById('lyrics-text');
-        const lyricsImgWrap = document.getElementById('lyrics-img-wrap');
         const lyricsClose = document.getElementById('lyrics-close');
         const resultsLabel = document.getElementById('results-label');
         const resultCount = document.getElementById('result-count');
+        
+        function formatListeners(n) {
+          const num = parseInt(n);
+          if (isNaN(num)) return '';
+          if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M listeners';
+          if (num >= 1000) return Math.round(num / 1000) + 'K listeners';
+          return num + ' listeners';
+        }
+        
+        async function fetchTracks(query, type) {
+          const method = type === 'artist' ? 'artist.gettoptracks' : 'tag.gettoptracks';
+          const param  = type === 'artist'
+            ? `artist=${encodeURIComponent(query)}`
+            : `tag=${encodeURIComponent(query)}`;
+        
+          const url = `${LASTFM_BASE}?method=${method}&${param}&api_key=${LASTFM_KEY}&format=json&limit=18`;
+        
+          const response = await fetch(url);
+          const data = await response.json();
+        
+          const tracks = data.toptracks?.track || data.tracks?.track;
+          if (!tracks || tracks.length === 0) return [];
+        
+          return tracks;
+        }
+        
+        function renderTracks(tracks) {
+          tracksGrid.innerHTML = '';
+          resultsLabel.classList.remove('hidden');
+          resultsLabel.classList.add('flex');
+          resultCount.textContent = tracks.length;
+        
+          tracks.forEach((track) => {
+            const imgSrc = track.image?.[2]?.['#text'] || '';
+            const artistName = track.artist?.name || track.artist || 'Unknown';
+        
+            const card = document.createElement('div');
+            card.className = 'track-card bg-gray-900 border border-gray-700 rounded-xl overflow-hidden cursor-pointer hover:border-pink-400 hover:-translate-y-1 transition-all duration-200';
+        
+            card.dataset.name = track.name;
+            card.dataset.artist = artistName;
+        
+            card.innerHTML = `
+              ${imgSrc ? `<img class="w-full aspect-square object-cover" src="${imgSrc}">`
+                : `<div class="w-full aspect-square bg-gray-800 flex items-center justify-center text-4xl">🎵</div>`}
+              <div class="p-3">
+                <div class="font-semibold text-sm truncate">${track.name}</div>
+                <div class="text-gray-400 text-xs truncate mt-0.5">${artistName}</div>
+                ${track.listeners ? `<div class="text-pink-400 text-xs mt-1">${formatListeners(track.listeners)}</div>` : ''}
+              </div>
+            `;
+        
+            card.addEventListener('click', () => loadLyrics(track.name, artistName));
+            tracksGrid.appendChild(card);
+          });
+        }
+        
+        async function loadLyrics(title, artist) {
+          lyricsPanel.classList.remove('hidden');
+          lyricsTitle.textContent = title;
+          lyricsArtistLabel.textContent = artist;
+          lyricsText.textContent = 'Loading...';
+        
+          try {
+            const res = await fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`);
+            const data = await res.json();
+        
+            lyricsText.textContent = data.lyrics || 'No lyrics found.';
+          } catch {
+            lyricsText.textContent = 'No lyrics found.';
+          }
+        }
+        
+        async function doSearch() {
+            const query = searchInput.value.trim();
+            const type = searchTypeEl.value;
+            if (!query) return;
+
+            console.log("Searching:", query, type); // 👈 DEBUG
+
+            lyricsPanel.classList.add('hidden');
+            tracksGrid.innerHTML = '';
+            resultsLabel.classList.add('hidden');
+            resultsLabel.classList.remove('flex');
+
+            try {
+                const tracks = await fetchTracks(query, type);
+                console.log(tracks); // 👈 DEBUG
+
+                if (tracks.length === 0) {
+                tracksGrid.innerHTML = `<div class="text-center col-span-full">No results</div>`;
+                return;
+                }
+
+                renderTracks(tracks);
+            } catch (err) {
+                console.error(err);
+                tracksGrid.innerHTML = `<div class="text-center col-span-full">Error loading data</div>`;
+            }
+        }
+        
+        searchBtn.addEventListener('click', () => {
+        console.log("button clicked");
+        doSearch();
+        });
+        
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') doSearch();
+        });
+        
+        lyricsClose.addEventListener('click', () => {
+          lyricsPanel.classList.add('hidden');
+        });
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            searchInput.value = btn.dataset.query;
+            searchTypeEl.value = btn.dataset.type;
+            doSearch();
+          });
+        });
     </script>
 </body>
 </html>

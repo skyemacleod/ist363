@@ -1,0 +1,63 @@
+.app-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.card-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 200px;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.viewed-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: red;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.detail-card {
+  background-color: #6c757d;
+  color: white;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.detail-card img {
+  width: 200px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.detail-card button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}

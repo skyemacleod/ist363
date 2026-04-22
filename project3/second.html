@@ -12,15 +12,14 @@
     <header class="bg-black sticky border-b border-gray-500 flex items-center justify-between px-6 py-5">
         <a href="#" style="font-family: 'Bebas Neue'" class="text-white text-4xl">Project 03</a>
         <nav class="hidden md:flex gap-8">
-            <a href="#" class="text-gray-500 hover:text-pink-200 text-s uppercase font-mono transition-colors">Search</a>
+            <a href="third.html" class="text-gray-500 hover:text-pink-200 text-s uppercase font-mono transition-colors">Search</a>
             <a href="#" class="text-gray-500 hover:text-pink-200 text-s uppercase font-mono transition-colors">Account</a>
             <a href="#" class="text-gray-500 hover:text-pink-200 text-s uppercase font-mono transition-colors">About</a>
         </nav>
     </header>
 
     <section class="text-center px-4 pt-20 pb-10">
-        <img src="media/images.png" class="h-16 w-auto mx-auto mb-10">
-        <div class="font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5">
+        <div class="font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 mt-10">
             Music Explorer
         </div>
         <h1 style="font-family: 'Bebas Neue'" class="text-8xl text-pink-200 mb-4">Find your sound</h1>
@@ -32,17 +31,14 @@
                 placeholder="e.g. Olivia Rodrigo, hip hop, rock..."
                 class="flex-1 bg-transparent border-none outline-none text-white px-5 py-4 text-base"
             />
-            <div class="flex items-center border-l border-gray-500 px-2 ">
-                <select id="search-type" class="bg-transparent text-gray-300 font-mono text-xs px-2 h-full cursor-pointer">
-                  <option value="artist" class="text-white">Artist</option>
-                  <option value="tag" class="text-white">Genre</option>
-                </select>
-            </div>
-            <button id="search-btn" style="font-family: 'Bebas Neue'" class="text-pink-500 bg-pink-200 text-xl py-4 px-5 hover:bg-pink-300">
-                Search
-            </button>
+            <a href="third.html">
+                <button id="search-btn" style="font-family: 'Bebas Neue'" class="text-pink-500 bg-pink-200 text-xl py-4 px-5 hover:bg-pink-300">
+                    Search
+                </button>
+            </a>
+            
         </div>
-        <div class="flex flex-wrap gap-2 justify-center mt-6">
+        <div class="flex flex-wrap gap-2 justify-center mt-6 pb-16">
             <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="pop" data-type="tag">Pop</button>
             <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="rap" data-type="tag">Rap</button>
             <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="hip hop" data-type="tag">Hip Hop</button>
@@ -51,24 +47,6 @@
             <button class="tab-btn font-mono text-xs uppercase text-pink-200 border border-pink-400 px-4 py-1.5 rounded-full inline-block mb-5 hover:text-white hover:bg-pink-400 transition-all" data-query="taylor swift" data-type="artist">Taylor Swift</button>
         </div>
     </section>
-
-    <main id="result-section" class="text-center max-w-5xl mx-auto md:px-2">
-        <div id="results-label" class="hidden items-center gap-3 font-mono text-s uppercase text-pink-200 border-b border-pink-400 pb-3 mb-5">
-            Tracks <span id="result-count" class="bg-pink-400 text-black text-xs px-2 py-0.5 rounded-full font-semibold">0</span>
-        </div>
-        <div id="lyrics-section" class="hidden mx-4 border border-pink-400 bg-pink-200 rounded-xl my-4 overflow-hidden w-75">
-          <div style="font-family:'DM Sans',sans-serif" class="flex items-center p-5 bg-pink-400">
-              <div>
-                  <h2 id="song-title" class="text-lg text-black"></h2>
-                  <p id="song-artist" class="text-sm text-black"></p>
-              </div>
-              <button id="lyrics-close" class="ml-auto w-8 h-8 rounded-lg border border-border text-muted hover:border-pink hover:text-pink transition-all flex items-center justify-center text-sm flex-shrink-0">✕</button>
-          </div>
-          <div id="lyrics-body" class="px-6 py-8 max-h-[500px] overflow-y-auto">
-              <pre id="lyrics-text" class="leading-7 text-black whitespace-pre-wrap" style="font-family:'DM Sans',sans-serif"></pre>
-            </div>
-      </div>
-    </main>
 
     <footer class="border-t border-gray-600 text-center p-6 text-gray-400 font-mono">
         <p class="text-s">Skye MacLeod - Project 3 - IST363</p>
